@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import ExercisesList from "./components/ExercisesList";
+import EditExercise from "./components/EditExercise";
+import CreateExercise from "./components/CreateExercise";
+import CreateUser from "./components/CreateUser";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <Switch>
+        <Route path="/" exact>
+          <ExercisesList />
+        </Route>
+        <Route path="/edit/:id">
+          <EditExercise />
+        </Route>
+        <Route path="/create">
+          <CreateExercise />
+        </Route>
+        <Route path="/user">
+          <CreateUser />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
 export default App;
+
+const Container = styled.div``;
